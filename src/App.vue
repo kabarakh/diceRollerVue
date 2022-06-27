@@ -3,7 +3,7 @@ import InputForm from "@/components/molecules/InputForm.vue";
 import StatisticsTable from "@/components/molecules/StatisticsTable.vue";
 import DiceRollTable from "@/components/molecules/DiceRollTable.vue";
 
-import { useDiceRollStore } from "./stores/diceRollStore";
+import { useDiceRollStore } from "@/stores/diceRollStore";
 
 const diceRolls = useDiceRollStore();
 </script>

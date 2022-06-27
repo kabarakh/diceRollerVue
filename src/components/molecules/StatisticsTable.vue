@@ -1,5 +1,5 @@
 <script setup>
-import { useDiceRollStore } from "../../stores/diceRollStore";
+import { useDiceRollStore } from "@/stores/diceRollStore";
 import { ref } from "vue";
 
 const diceRolls = useDiceRollStore();
@@ -20,23 +20,23 @@ function toggleTable() {
     <table class="table">
       <tr>
         <th>Rolls total</th>
-        <td>{{diceRolls.statistics.numberOfDiceRolls.total}}</td>
+        <td>{{ diceRolls.statistics.numberOfDiceRolls.total }}</td>
       </tr>
       <tr>
         <th>Rolls better than average</th>
-        <td class="table-success">{{diceRolls.statistics.numberOfDiceRolls.betterThanAverage}}</td>
+        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.betterThanAverage }}</td>
       </tr>
       <tr>
         <th>Rolls equal to average</th>
-        <td class="table-success">{{diceRolls.statistics.numberOfDiceRolls.average}}</td>
+        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.average }}</td>
       </tr>
       <tr>
         <th>Rolls worse than average</th>
-        <td class="table-success">{{diceRolls.statistics.numberOfDiceRolls.worseThanAverage}}</td>
+        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.worseThanAverage }}</td>
       </tr>
       <tr>
         <th>Sum of all rolls</th>
-        <td>{{diceRolls.statistics.sumOfAllRolls}} (Sum of averages: {{diceRolls.statistics.sumOfAverages}})</td>
+        <td>{{ diceRolls.statistics.sumOfAllRolls }} (Sum of averages: {{ diceRolls.statistics.sumOfAverages }})</td>
       </tr>
     </table>
   </div>

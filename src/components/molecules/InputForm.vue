@@ -33,7 +33,8 @@ watch(inputString, (currentInputString) => {
 <template>
   <h2>Type in your dice roll</h2>
   <div class="alert alert-info">
-    You can use [count]d[type] or [count]w[type] and add or subtract dice or modifiers
+    You can use [count]d[type] or [count]w[type] and add or subtract dice or
+    modifiers
   </div>
   <ValidationError :validation-error="validationError" />
   <form

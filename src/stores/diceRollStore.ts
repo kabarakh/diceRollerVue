@@ -9,7 +9,7 @@ const prepareInputParts = (input: string): string[] => {
     .toLowerCase()
     .replace(/\s*/g, "")
     .replace(/[^\dwd+-]/g, "")
-    .replace(/(\+|-)/g, " $1");
+    .replace(/([+-])/g, " $1");
 
   return input.split(" ");
 };
@@ -21,7 +21,7 @@ const createDiceFromSinglePart = (input: string): SingleDie => {
   let average = 0;
   let sum = 0;
 
-  if (input.match(/^(-|\+)/)) {
+  if (input.match(/^([-+])/)) {
     delimiter = input.charAt(0);
     input = input.substr(1);
   }
@@ -50,7 +50,7 @@ const createDiceFromSinglePart = (input: string): SingleDie => {
     count,
     sides,
     average,
-    sum
+    sum,
   };
 };
 
@@ -58,22 +58,21 @@ export const useDiceRollStore = defineStore({
   id: "diceRollStore",
   state: () => {
     return {
-      diceRolls: useStorage("diceRolls", [] as DiceRoll[])
+      diceRolls: useStorage("diceRolls", [] as DiceRoll[]),
     };
   },
   getters: {
     allRolls: (state) => state.diceRolls,
     statistics: (state) => {
-
       const statistics = {
         numberOfDiceRolls: {
           total: 0,
           average: 0,
           betterThanAverage: 0,
-          worseThanAverage: 0
+          worseThanAverage: 0,
         },
         sumOfAllRolls: 0,
-        sumOfAverages: 0
+        sumOfAverages: 0,
       };
 
       state.diceRolls.forEach((diceRoll: DiceRoll) => {
@@ -92,7 +91,7 @@ export const useDiceRollStore = defineStore({
       });
 
       return statistics;
-    }
+    },
   },
   actions: {
     addDiceRoll(input: string) {
@@ -108,7 +107,7 @@ export const useDiceRollStore = defineStore({
         sum = 0;
 
       inputParts.forEach((singlePart) => {
-        if (!singlePart.match(/^(\+|-)$/)) {
+        if (!singlePart.match(/^([+-])$/)) {
           diceList.push(createDiceFromSinglePart(singlePart));
         }
       });
@@ -131,14 +130,13 @@ export const useDiceRollStore = defineStore({
         input: input,
         dice: diceList,
         average: average,
-        sum: sum
+        sum: sum,
       };
 
       this.diceRolls.unshift(newDiceRoll);
     },
     clearDiceRolls() {
-      console.log("reset");
       this.diceRolls = [];
-    }
-  }
+    },
+  },
 });
