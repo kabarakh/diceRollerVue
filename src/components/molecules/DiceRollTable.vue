@@ -1,11 +1,13 @@
 <script setup>
+
 import { useDiceRollStore } from "../../stores/diceRollStore";
 
 const diceRolls = useDiceRollStore();
+
 </script>
 
 <template>
-  <table>
+  <table v-if="diceRolls.allRolls.length">
     <thead>
       <tr>
         <th>Date</th>
@@ -17,13 +19,17 @@ const diceRolls = useDiceRollStore();
       </tr>
     </thead>
     <tbody>
-    <tr v-for="diceRoll in diceRolls.allRolls" :key="diceRoll.date.toString()">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr v-for="diceRoll in diceRolls.allRolls" :key="diceRoll.key">
+      <td>{{diceRoll.displayDate}}</td>
+      <td>{{diceRoll.input}}</td>
+      <td>
+        <span v-for="singleDie of diceRoll.dice" :key="diceRoll.key + singleDie.input">{{singleDie.delimiter}}{{singleDie.sum}}</span>
+      </td>
+      <td>{{diceRoll.sum}}</td>
+      <td>{{diceRoll.average}}</td>
+      <td>
+        <button type="button" @click="diceRolls.addDiceRoll(diceRoll.input)">Reroll</button>
+      </td>
     </tr>
     </tbody>
   </table>

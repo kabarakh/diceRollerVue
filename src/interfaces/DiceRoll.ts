@@ -1,9 +1,11 @@
 import type { SingleDie } from "@/interfaces/SingleDie";
+import type { Moment } from "moment";
 
 export interface DiceRoll {
   dice: SingleDie[];
   average: number;
   sum: number;
-  date: Date;
+  displayDate: string;
+  key: string;
   input: string;
 }
