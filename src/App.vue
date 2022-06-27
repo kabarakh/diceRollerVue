@@ -21,6 +21,6 @@ const diceRolls = useDiceRollStore();
   <DiceRollTable />
 </template>
 
-<style>
+<style lang="scss">
 @import "./assets/Main.scss";
 </style>
