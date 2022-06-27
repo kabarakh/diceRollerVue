@@ -52,7 +52,12 @@ watch(inputString, (currentInputString) => {
     </div>
     <div class="col-lg-4 col-12 row roll-buttons">
       <div class="col-sm-6 col mb-2">
-        <input class="btn btn-primary" type="submit" value="Submit" />
+        <input
+          class="btn btn-primary"
+          type="submit"
+          value="Submit"
+          :disabled="inputString.length === 0 || validationError.length > 0"
+        />
       </div>
       <div class="col-sm-6 col-12 mb-2">
         <button type="button" class="btn btn-secondary" @click="resetInput">
