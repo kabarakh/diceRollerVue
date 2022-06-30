@@ -1,0 +1,15 @@
+.table {
+  .rolls {
+    &-better {
+      background-color: $success-background;
+    }
+
+    &-average {
+      background-color: $warning-background;
+    }
+
+    &-worse {
+      background-color: $danger-background;
+    }
+  }
+}

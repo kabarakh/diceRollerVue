@@ -9,16 +9,18 @@ const diceRolls = useDiceRollStore();
 </script>
 
 <template>
-  <InputForm />
-  <div class="mb-2 row">
-    <div class="col-12">
-      <button class="btn btn-secondary" type="button" @click="diceRolls.clearDiceRolls()">
-        Reset table
-      </button>
+  <div class="container">
+    <InputForm />
+    <div class="mb-2 row">
+      <div class="col-12">
+        <button class="btn btn-secondary" type="button" @click="diceRolls.clearDiceRolls()">
+          Reset table
+        </button>
+      </div>
     </div>
+    <StatisticsTable />
+    <DiceRollTable />
   </div>
-  <StatisticsTable />
-  <DiceRollTable />
 </template>
 
 <style lang="scss">
