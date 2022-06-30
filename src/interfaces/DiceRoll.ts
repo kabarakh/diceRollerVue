@@ -8,4 +8,5 @@ export interface DiceRoll {
   displayDate: string;
   key: string;
   input: string;
+  display: string;
 }

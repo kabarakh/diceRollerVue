@@ -7,7 +7,7 @@ import moment from "moment";
 const prepareInputParts = (input: string): string[] => {
   input = input
     .toLowerCase()
-    .replace(/[\s]/, "")
+    .replace(/\s/g, "")
     .replace(/([+-])/g, " $1");
 
   return input.split(" ");
@@ -97,9 +97,7 @@ export const useDiceRollStore = defineStore({
       if (input.length === 0) {
         return;
       }
-
       const inputParts = prepareInputParts(input);
-      console.log(inputParts);
 
       const diceList = [] as SingleDie[];
 
@@ -127,7 +125,8 @@ export const useDiceRollStore = defineStore({
       const newDiceRoll: DiceRoll = {
         displayDate: date.format("DD.MM.YYYY HH:mm:ss"),
         key: date.valueOf().toString(),
-        input: inputParts.join(" "),
+        display: inputParts.join("&shy;"),
+        input: input,
         dice: diceList,
         average: average,
         sum: sum,

@@ -24,19 +24,33 @@ function toggleTable() {
       </tr>
       <tr class="rolls-better">
         <th>Rolls better than average</th>
-        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.betterThanAverage }}</td>
+        <td class="table-success">
+          {{ diceRolls.statistics.numberOfDiceRolls.betterThanAverage }}
+        </td>
       </tr>
       <tr class="rolls-average">
         <th>Rolls equal to average</th>
-        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.average }}</td>
+        <td class="table-success">
+          {{ diceRolls.statistics.numberOfDiceRolls.average }}
+        </td>
       </tr>
       <tr class="rolls-worse">
         <th>Rolls worse than average</th>
-        <td class="table-success">{{ diceRolls.statistics.numberOfDiceRolls.worseThanAverage }}</td>
+        <td class="table-success">
+          {{ diceRolls.statistics.numberOfDiceRolls.worseThanAverage }}
+        </td>
       </tr>
       <tr>
         <th>Sum of all rolls</th>
-        <td>{{ diceRolls.statistics.sumOfAllRolls }} (Sum of averages: {{ diceRolls.statistics.sumOfAverages }})</td>
+        <td
+          :class="{
+            'rolls-average': diceRolls.statistics.sumOfAllRolls === diceRolls.statistics.sumOfAverages,
+            'rolls-better': diceRolls.statistics.sumOfAllRolls > diceRolls.statistics.sumOfAverages,
+            'rolls-worse': diceRolls.statistics.sumOfAllRolls < diceRolls.statistics.sumOfAverages,
+          }"
+        >
+          {{ diceRolls.statistics.sumOfAllRolls }} (Sum of averages: {{ diceRolls.statistics.sumOfAverages }})
+        </td>
       </tr>
     </table>
   </div>
