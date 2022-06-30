@@ -7,8 +7,6 @@ import moment from "moment";
 const prepareInputParts = (input: string): string[] => {
   input = input
     .toLowerCase()
-    .replace(/\s*/g, "")
-    .replace(/[^\dwd+-]/g, "")
     .replace(/([+-])/g, " $1");
 
   return input.split(" ");

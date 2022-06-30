@@ -21,7 +21,7 @@ watch(inputString, (currentInputString) => {
   if (dirty.value) {
     if (!currentInputString.length) {
       validationError.value = "required";
-    } else if (/^[ dw\d+-]+$/.test(currentInputString) === false) {
+    } else if (/^[+-]?[\d]*(d|w)?[\d]([+-]?[\d]*(d|w)?[\d])*$/.test(currentInputString) === false) {
       validationError.value = "pattern";
     } else {
       validationError.value = "";
